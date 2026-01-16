@@ -35,9 +35,8 @@ const gameOver = (function isGameOver () {
 
     // check diagonals
     if (
-        ((gameBoard[0][0] === gameBoard[1][1] && gameBoard[0][0] === gameBoard[2][2]) ||
-        (gameBoard[0][2] === gameBoard[1][1] && gameBoard[0][2] === gameBoard[2][0])) &&
-        !gameBoard[0].includes(null) && !gameBoard[1].includes(null) && !gameBoard[2].includes(null)
+        ((gameBoard[0][0] === gameBoard[1][1] && gameBoard[0][0] === gameBoard[2][2] && gameBoard[0][0] !== null) ||
+        (gameBoard[0][2] === gameBoard[1][1] && gameBoard[0][2] === gameBoard[2][0]) && gameBoard[2][0] !== null)
     ) {
         return true;
     };
