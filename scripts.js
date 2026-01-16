@@ -88,7 +88,7 @@ buttons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
         const locationArray = e.target.parentNode.className.split(" ");
         const row = locationArray[0].substring(3,4);
-        const col = locationArray[1].substring(3,4)
+        const col = locationArray[1].substring(3,4);
 
         makeMove(col, row, player);
 
@@ -97,7 +97,9 @@ buttons.forEach((btn) => {
         
 
         if(gameOver() === true){
-            alert("Game over!")
+            document.querySelector("#newGame").textContent="New game";
+            alert("Game over!");
+            
         };
     });
 
@@ -113,6 +115,7 @@ buttons.forEach((btn) => {
         btn.textContent = ""
     })
 });
+
 const newGameButton = document.querySelector("#newGame");
 newGameButton.addEventListener("click", (e) => {
     let gameBoard = [];
@@ -124,7 +127,10 @@ let gameBoard = [];
 gameBoard = createGameBoard();
 
 const resetGameBoard = (function resetGameBoard() {
-    document.querySelector("#newGame").disabled = true;
+    const newGameBtn = document.querySelector("#newGame");
+    newGameBtn.disabled = true;
+    newGameBtn.textContent="Reset Game";
+
     const getDivs = document.querySelectorAll("#gameGrid>div");
     getDivs.forEach((item) => {
         item.classList.remove("x");
@@ -145,8 +151,6 @@ const triggerNewGame = (function startnewGame() {
     gameBoard = createGameBoard();
 });
 
-
-
 const changePlayer = (function changePlayer () {
     if (player == "user") {
         player = "pc"
@@ -154,4 +158,5 @@ const changePlayer = (function changePlayer () {
         player = "user"
     }
 });
+
 
