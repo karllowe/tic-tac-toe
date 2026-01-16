@@ -57,10 +57,10 @@ const updateBoard = (function updateScreen(row, col, player) {
     const selectedCell = document.getElementsByClassName(`row${row} col${col}`)[0];
     const pElement = selectedCell.querySelector("p");
     if (player == "user") {
-        pElement.textContent = "x";
+        pElement.textContent = "✘";
         pElement.classList.add("x")
     } else {
-        pElement.textContent = "O";
+        pElement.textContent = "◯";
         pElement.classList.add("o")
     };
 });
@@ -103,9 +103,9 @@ buttons.forEach((btn) => {
 
     btn.addEventListener("mouseover", (e) => {
         if (player == "user") {
-            btn.textContent="X"
+            btn.textContent="✘"
         } else {
-            btn.textContent="O"
+            btn.textContent="◯"
         }       
     })
 
