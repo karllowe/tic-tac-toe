@@ -90,9 +90,22 @@ buttons.forEach((btn) => {
         if(gameOver() === true){
             alert("asda")
         }
+    });
 
+    btn.addEventListener("mouseover", (e) => {
+        if (player == "user") {
+            btn.textContent="X"
+        } else {
+            btn.textContent="O"
+        }       
+    })
+
+    btn.addEventListener("mouseleave", (e) => {
+        btn.textContent = ""
     })
 });
+
+
 let player;
 
 const gameBoard = createGameBoard();
