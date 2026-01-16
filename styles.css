@@ -61,7 +61,7 @@ body {
     background-color: lightcyan;
 }
 
-#newGame {
+.newGame {
     width: 120px;
     align-self: end;
     background-color: green;
@@ -69,6 +69,6 @@ body {
     border-radius: 50vh;
 }
 
-#newGame:disabled {
+.newGame:disabled {
     background-color: grey;
 }

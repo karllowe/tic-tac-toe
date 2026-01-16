@@ -9,7 +9,7 @@ const createGameBoard = (function createBoard() {
         array.push(row)
     };
 
-    document.querySelector("#newGame").disabled = true;
+    document.querySelector(".newGame").disabled = true;
 
     return gameBoardObject = array;
 });
@@ -93,13 +93,12 @@ buttons.forEach((btn) => {
         makeMove(col, row, player);
 
         btn.classList.add("hidden");
-        document.querySelector("#newGame").disabled = false;
+        document.querySelector(".newGame").disabled = false;
         
 
         if(gameOver() === true){
-            document.querySelector("#newGame").textContent="New game";
-            alert("Game over!");
-            
+            document.querySelector(".newGame").textContent="New game";
+            document.querySelector("dialog").showModal();
         };
     });
 
@@ -116,10 +115,12 @@ buttons.forEach((btn) => {
     })
 });
 
-const newGameButton = document.querySelector("#newGame");
-newGameButton.addEventListener("click", (e) => {
-    let gameBoard = [];
-    gameBoard = triggerNewGame();
+const newGameButton = document.querySelectorAll(".newGame");
+newGameButton.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+        let gameBoard = [];
+        gameBoard = triggerNewGame();
+    })
 });
 
 let player;
@@ -127,7 +128,7 @@ let gameBoard = [];
 gameBoard = createGameBoard();
 
 const resetGameBoard = (function resetGameBoard() {
-    const newGameBtn = document.querySelector("#newGame");
+    const newGameBtn = document.querySelector(".newGame");
     newGameBtn.disabled = true;
     newGameBtn.textContent="Reset Game";
 
@@ -144,6 +145,8 @@ const resetGameBoard = (function resetGameBoard() {
         const childBtn = item.querySelector("button");
         childBtn.classList.remove("hidden")
     });
+
+    document.querySelector("dialog").close()
 });
 
 const triggerNewGame = (function startnewGame() {
