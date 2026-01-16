@@ -2,6 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    gap: 6px;
 }
 
 #gameGrid {
@@ -23,6 +24,7 @@ body {
     justify-content: space-around;
 }
 
+
 #gameGrid button {
     width:100%;
     height: 100%;
@@ -36,4 +38,12 @@ body {
 
 .o {
     background-color: lightcyan;
+}
+
+#newGame {
+    width: 120px;
+    align-self: end;
+    background-color: green;
+    color: white;
+    border-radius: 50vh;
 }

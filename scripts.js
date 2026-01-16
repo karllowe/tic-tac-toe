@@ -60,7 +60,7 @@ const updateBoard = (function updateScreen(row, col, player) {
     } else {
         selectedCell.textContent="O";
         selectedCell.classList.add("o")
-    }
+    };
 });
 
 const makeMove = (function makeMove(col, row, player) {
@@ -80,7 +80,7 @@ const makeMove = (function makeMove(col, row, player) {
 
 
 
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll(".cell");
 buttons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
         const locationArray = e.target.parentNode.className.split(" ");
@@ -91,7 +91,7 @@ buttons.forEach((btn) => {
 
         if(gameOver() === true){
             alert("Game over!")
-        }
+        };
     });
 
     btn.addEventListener("mouseover", (e) => {
@@ -106,11 +106,25 @@ buttons.forEach((btn) => {
         btn.textContent = ""
     })
 });
-
+const newGameButton = document.querySelector("#newGame");
+newGameButton.addEventListener("click", (e) => {
+    gameBoard = triggerNewGame();
+});
 
 let player;
+let gameBoard = [];
+gameBoard = createGameBoard();
 
-const gameBoard = createGameBoard();
+const triggerNewGame = (function startnewGame() {
+    const getDivs = document.querySelectorAll("#gameGrid>div");
+    getDivs.forEach((item) => {
+        item.classList.remove("x");
+        item.classList.remove("o");
+    });
+    gameBoard = createGameBoard();
+});
+
+
 
 const changePlayer = (function changePlayer () {
     if (player == "user") {
@@ -119,5 +133,3 @@ const changePlayer = (function changePlayer () {
         player = "user"
     }
 });
-
-
