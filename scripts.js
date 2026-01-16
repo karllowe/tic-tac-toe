@@ -7,7 +7,9 @@ const createGameBoard = (function createBoard() {
             row.push(null)
         };
         array.push(row)
-    }
+    };
+
+    document.querySelector("#newGame").disabled = true;
 
     return gameBoardObject = array;
 });
@@ -90,7 +92,9 @@ buttons.forEach((btn) => {
 
         makeMove(col, row, player);
 
-        const button = btn.classList.add("hidden")
+        btn.classList.add("hidden");
+        document.querySelector("#newGame").disabled = false;
+        
 
         if(gameOver() === true){
             alert("Game over!")
@@ -119,7 +123,8 @@ let player;
 let gameBoard = [];
 gameBoard = createGameBoard();
 
-const triggerNewGame = (function startnewGame() {
+const resetGameBoard = (function resetGameBoard() {
+    document.querySelector("#newGame").disabled = true;
     const getDivs = document.querySelectorAll("#gameGrid>div");
     getDivs.forEach((item) => {
         item.classList.remove("x");
@@ -129,7 +134,14 @@ const triggerNewGame = (function startnewGame() {
         childP.textContent = "";
         childP.classList.remove("x");
         childP.classList.remove("o");
+
+        const childBtn = item.querySelector("button");
+        childBtn.classList.remove("hidden")
     });
+});
+
+const triggerNewGame = (function startnewGame() {
+    resetGameBoard();
     gameBoard = createGameBoard();
 });
 
@@ -142,3 +154,4 @@ const changePlayer = (function changePlayer () {
         player = "user"
     }
 });
+

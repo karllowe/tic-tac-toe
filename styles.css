@@ -68,3 +68,7 @@ body {
     color: white;
     border-radius: 50vh;
 }
+
+#newGame:disabled {
+    background-color: grey;
+}
