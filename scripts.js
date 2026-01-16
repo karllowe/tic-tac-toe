@@ -12,29 +12,7 @@ const createGameBoard = (function createBoard() {
     return gameBoardObject = array;
 });
 
-const makeMove = (function makeMove(col, row, player) {
-    if (gameBoard[row-1][col-1] !== null) {
-        throw Error("space already taken!")
-    };
-
-    if (player == "user") {
-        gameBoard[row-1].splice(col-1,1,"x");
-    } else {
-        gameBoard[row-1].splice(col-1,1,"y");
-    };
-    console.clear()
-    console.log(gameBoard[0]);
-    console.log(gameBoard[1]);
-    console.log(gameBoard[2]);
-});
-
-const gameBoard = createGameBoard();
-
-makeMove(1,3,"pc");
-makeMove(2,2,"pc");
-makeMove(3,3,"pc");
-
-const getOutcome = (function isGameOver () {
+const gameOver = (function isGameOver () {
     const isEqual = (function allEqual(array) {
         return array.every(item => item === array[0] && typeof item === "string" ); 
     });
@@ -64,4 +42,27 @@ const getOutcome = (function isGameOver () {
     return false;
 });
 
-console.log(getOutcome())
+const makeMove = (function makeMove(col, row, player) {
+    if (gameBoard[row-1][col-1] !== null) {
+        throw Error("space already taken!")
+    };
+
+    if (player == "user") {
+        gameBoard[row-1].splice(col-1,1,"x");
+    } else {
+        gameBoard[row-1].splice(col-1,1,"y");
+    };
+    console.clear()
+    console.log(gameBoard[0]);
+    console.log(gameBoard[1]);
+    console.log(gameBoard[2]);
+    console.log(gameOver())
+});
+
+const gameBoard = createGameBoard();
+
+makeMove(1,3,"pc");
+makeMove(2,2,"pc");
+makeMove(3,3,"pc");
+
+
