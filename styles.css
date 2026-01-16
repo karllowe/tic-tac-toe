@@ -14,18 +14,30 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    border: 1px solid black;
+    border: 0px solid black;
     height:100%;
     background-color: lightgray;
+    border-radius: 12px;
 }
 
 #gameGrid div {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    --border-color: 3px solid black;
+    border-right: var(--border-color);
+    border-bottom: var(--border-color);
     text-align: center;
     place-items: center;
     display: inline-block;
     position:relative;
     padding: 0 0 0 0;
+}
+
+#gameGrid div:nth-child(3n) {
+    border-right: none;
+}
+
+#gameGrid div:nth-last-child(-n+3) {
+    border-bottom: none;
 }
 
 #gameGrid p {
