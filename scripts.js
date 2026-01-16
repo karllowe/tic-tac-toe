@@ -39,6 +39,16 @@ const gameOver = (function isGameOver () {
         return true;
     };
 
+    // check if a tie
+    if (
+        !gameBoard[0].includes(null) &&
+        !gameBoard[1].includes(null) &&
+        !gameBoard[2].includes(null)
+    ) {
+        return true
+
+    };
+
     return false;
 });
 
@@ -61,8 +71,7 @@ const makeMove = (function makeMove(col, row, player) {
 
 const gameBoard = createGameBoard();
 
-makeMove(1,3,"pc");
-makeMove(2,2,"pc");
-makeMove(3,3,"pc");
+
+
 
 
