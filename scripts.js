@@ -71,16 +71,28 @@ const makeMove = (function makeMove(col, row, player) {
     } else {
         gameBoard[row-1].splice(col-1,1,"y");
     };
-    console.clear()
-    console.log(gameBoard[0]);
-    console.log(gameBoard[1]);
-    console.log(gameBoard[2]);
-    console.log(gameOver());
+    // console.clear()
+    // console.log(gameBoard[0]);
+    // console.log(gameBoard[1]);
+    // console.log(gameBoard[2]);
+    // console.log(gameOver());
 
     updateBoard(row,col,player);
 });
 
 const gameBoard = createGameBoard();
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+        const locationArray = e.target.parentNode.className.split(" ");
+        const row = locationArray[0].substring(3,4);
+        const col = locationArray[1].substring(3,4)
+        console.log(locationArray);
+
+        updateBoard(row, col, "pc");
+    })
+});
 
 
 
