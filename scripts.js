@@ -33,8 +33,9 @@ const gameOver = (function isGameOver () {
 
     // check diagonals
     if (
-        (gameBoard[0][0] === gameBoard[1][1] && gameBoard[0][0] === gameBoard[2][2]) ||
-        (gameBoard[0][2] === gameBoard[1][1] && gameBoard[0][2] === gameBoard[2][0])
+        ((gameBoard[0][0] === gameBoard[1][1] && gameBoard[0][0] === gameBoard[2][2]) ||
+        (gameBoard[0][2] === gameBoard[1][1] && gameBoard[0][2] === gameBoard[2][0])) &&
+        !gameBoard[0].includes(null) && !gameBoard[1].includes(null) && !gameBoard[2].includes(null)
     ) {
         return true;
     };
@@ -46,7 +47,6 @@ const gameOver = (function isGameOver () {
         !gameBoard[2].includes(null)
     ) {
         return true
-
     };
 
     return false;
@@ -57,7 +57,7 @@ const updateBoard = (function updateScreen(row, col, player) {
     if (player == "user") {
         selectedCell.textContent="X"
     } else {
-        selectedCell.textContent="Y"
+        selectedCell.textContent="O"
     }
 });
 
@@ -69,18 +69,14 @@ const makeMove = (function makeMove(col, row, player) {
     if (player == "user") {
         gameBoard[row-1].splice(col-1,1,"x");
     } else {
-        gameBoard[row-1].splice(col-1,1,"y");
+        gameBoard[row-1].splice(col-1,1,"o");
     };
-    // console.clear()
-    // console.log(gameBoard[0]);
-    // console.log(gameBoard[1]);
-    // console.log(gameBoard[2]);
-    // console.log(gameOver());
 
     updateBoard(row,col,player);
+    changePlayer()
 });
 
-const gameBoard = createGameBoard();
+
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach((btn) => {
@@ -88,11 +84,25 @@ buttons.forEach((btn) => {
         const locationArray = e.target.parentNode.className.split(" ");
         const row = locationArray[0].substring(3,4);
         const col = locationArray[1].substring(3,4)
-        console.log(locationArray);
 
-        updateBoard(row, col, "pc");
+        makeMove(col, row, player);
+
+        if(gameOver() === true){
+            alert("asda")
+        }
+
     })
 });
+let player;
 
+const gameBoard = createGameBoard();
+
+const changePlayer = (function changePlayer () {
+    if (player == "user") {
+        player = "pc"
+    } else {
+        player = "user"
+    }
+});
 
 
