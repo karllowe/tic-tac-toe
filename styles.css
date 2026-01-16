@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#gameGrid {
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    border: 1px solid black;
+    height:100%;
+    background-color: lightgray;
+}
+
+#gameGrid div {
+    border: 1px solid black;
+    text-align: center;
+    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
