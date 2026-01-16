@@ -54,12 +54,13 @@ const gameOver = (function isGameOver () {
 
 const updateBoard = (function updateScreen(row, col, player) {
     const selectedCell = document.getElementsByClassName(`row${row} col${col}`)[0];
+    const pElement = selectedCell.querySelector("p");
     if (player == "user") {
-        selectedCell.textContent="X";
-        selectedCell.classList.add("x")
+        pElement.textContent = "x";
+        pElement.classList.add("x")
     } else {
-        selectedCell.textContent="O";
-        selectedCell.classList.add("o")
+        pElement.textContent = "O";
+        pElement.classList.add("o")
     };
 });
 
@@ -108,6 +109,7 @@ buttons.forEach((btn) => {
 });
 const newGameButton = document.querySelector("#newGame");
 newGameButton.addEventListener("click", (e) => {
+    let gameBoard = [];
     gameBoard = triggerNewGame();
 });
 
@@ -120,6 +122,11 @@ const triggerNewGame = (function startnewGame() {
     getDivs.forEach((item) => {
         item.classList.remove("x");
         item.classList.remove("o");
+
+        const childP = item.querySelector("p");
+        childP.textContent = "";
+        childP.classList.remove("x");
+        childP.classList.remove("o");
     });
     gameBoard = createGameBoard();
 });
