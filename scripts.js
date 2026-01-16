@@ -55,9 +55,11 @@ const gameOver = (function isGameOver () {
 const updateBoard = (function updateScreen(row, col, player) {
     const selectedCell = document.getElementsByClassName(`row${row} col${col}`)[0];
     if (player == "user") {
-        selectedCell.textContent="X"
+        selectedCell.textContent="X";
+        selectedCell.classList.add("x")
     } else {
-        selectedCell.textContent="O"
+        selectedCell.textContent="O";
+        selectedCell.classList.add("o")
     }
 });
 
@@ -88,7 +90,7 @@ buttons.forEach((btn) => {
         makeMove(col, row, player);
 
         if(gameOver() === true){
-            alert("asda")
+            alert("Game over!")
         }
     });
 

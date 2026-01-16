@@ -29,3 +29,11 @@ body {
     background-color: none;
     color: lightgray;
 }
+
+.x {
+    background-color: lightcoral;
+}
+
+.o {
+    background-color: lightcyan;
+}
