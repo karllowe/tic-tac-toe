@@ -90,6 +90,8 @@ buttons.forEach((btn) => {
 
         makeMove(col, row, player);
 
+        const button = btn.classList.add("hidden")
+
         if(gameOver() === true){
             alert("Game over!")
         };
