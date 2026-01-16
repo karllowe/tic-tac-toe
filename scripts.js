@@ -30,10 +30,38 @@ const makeMove = (function makeMove(col, row, player) {
 
 const gameBoard = createGameBoard();
 
-makeMove(2,3,"pc");
+makeMove(1,3,"pc");
+makeMove(2,2,"pc");
+makeMove(3,3,"pc");
 
+const getOutcome = (function isGameOver () {
+    const isEqual = (function allEqual(array) {
+        return array.every(item => item === array[0] && typeof item === "string" ); 
+    });
 
-makeMove(1,3,"user");
+    const filteredRows = gameBoard.filter((item) => isEqual(item));
+    // check rows
+    if (filteredRows.length >=1) {
+        return true;
+    };
+    
+    // check columns
+    for (let i=0; i<gameBoard.length;i++) {
+        const column = gameBoard.map((value) => value[i]);
+        if (isEqual(column)) {
+            return true;
+        }
+    };
 
+    // check diagonals
+    if (
+        (gameBoard[0][0] === gameBoard[1][1] && gameBoard[0][0] === gameBoard[2][2]) ||
+        (gameBoard[0][2] === gameBoard[1][1] && gameBoard[0][2] === gameBoard[2][0])
+    ) {
+        return true;
+    };
 
+    return false;
+});
 
+console.log(getOutcome())
