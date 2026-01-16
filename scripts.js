@@ -52,6 +52,15 @@ const gameOver = (function isGameOver () {
     return false;
 });
 
+const updateBoard = (function updateScreen(row, col, player) {
+    const selectedCell = document.getElementsByClassName(`row${row} col${col}`)[0];
+    if (player == "user") {
+        selectedCell.textContent="X"
+    } else {
+        selectedCell.textContent="Y"
+    }
+});
+
 const makeMove = (function makeMove(col, row, player) {
     if (gameBoard[row-1][col-1] !== null) {
         throw Error("space already taken!")
@@ -66,12 +75,12 @@ const makeMove = (function makeMove(col, row, player) {
     console.log(gameBoard[0]);
     console.log(gameBoard[1]);
     console.log(gameBoard[2]);
-    console.log(gameOver())
+    console.log(gameOver());
+
+    updateBoard(row,col,player);
 });
 
 const gameBoard = createGameBoard();
-
-
 
 
 
